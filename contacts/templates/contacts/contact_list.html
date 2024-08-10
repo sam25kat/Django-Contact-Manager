@@ -1,0 +1,22 @@
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'contacts/styles.css' %}">
+</head>
+<body>
+<h2>Contact List</h2>
+<ul>
+    {% for contact in contacts %}
+        <li>{{ contact.name }} - {{ contact.phone_number }}
+            <a href="{% url 'update_contact' contact.pk %}">Edit</a>
+            <a href="{% url 'delete_contact' contact.pk %}">Delete</a>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_contact' %}">Add new contact</a>
+<form method="get" action="{% url 'search_contact' %}">
+    <input type="text" name="q" placeholder="Search contacts...">
+    <button type="submit">Search</button>
+</form>
+</body>
+</html>

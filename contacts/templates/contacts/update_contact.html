@@ -1,0 +1,15 @@
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'contacts/styles.css' %}">
+</head>
+<body>
+<h2>Update Contact</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+<a href="{% url 'contact_list' %}">Back to list</a>
+</body>
+</html>

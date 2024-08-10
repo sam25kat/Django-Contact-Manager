@@ -1,0 +1,18 @@
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'contacts/styles.css' %}">
+</head>
+<body>
+<h2>Search Results</h2>
+<ul>
+    {% for contact in results %}
+        <li>{{ contact.name }} - {{ contact.phone_number }}
+            <a href="{% url 'update_contact' contact.pk %}">Edit</a>
+            <a href="{% url 'delete_contact' contact.pk %}">Delete</a>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'contact_list' %}">Back to list</a>
+</body>
+</html>
